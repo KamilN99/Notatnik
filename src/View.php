@@ -12,6 +12,7 @@ class View
         require_once("templates/layout.php");
     }
     
+    //metoda zabezpieczająca przed wyświetlaniem niebezpiecznych danych np. skrypt js
     private function escape(array $params): array
     {
         $cleanParams = [];

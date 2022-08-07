@@ -29,11 +29,13 @@ class Request
         return $this->post[$name] ?? $default;
     }
 
+    //czy get istnieje
     public function isGet(): bool
     {
         return $this->server['REQUEST_METHOD'] === 'GET';
     }
 
+    //czy post istnieje
     public function isPost(): bool
     {
         return $this->server['REQUEST_METHOD'] === 'POST';

@@ -26,6 +26,8 @@ class NoteController extends AbstractController
         $this->noteModel = new NoteModel(self::$configuartion['db']);
         $this->userModel = new UserModel(self::$configuartion['db']);
     }
+
+    //dodawanie nowej notatki
     public function createAction(): void
     {
         if ($this->request->isPost()) {
@@ -39,7 +41,8 @@ class NoteController extends AbstractController
         }
         $this->view->render('create');
     }
-
+    
+    //usuwanie notatki
     public function deleteAction(): void
     {
         if ($this->request->isPost()) {
@@ -54,7 +57,7 @@ class NoteController extends AbstractController
         ];
         $this->view->render('delete', $viewParams);
     }
-
+    //edytowanie notatki
     public function editAction(): void
     {
         if ($this->request->isPost()) {
@@ -72,7 +75,7 @@ class NoteController extends AbstractController
         ];
         $this->view->render('edit', $viewParams);
     }
-
+    //wyswietlanie listy notatek
     public function listAction(): void
     {
         define('PAGE_SIZE', 5);
@@ -112,7 +115,8 @@ class NoteController extends AbstractController
             $this->view->render('login');
         }
     }
-
+    
+    //wyświetlanie notatki
     public function showAction(): void
     {
         $note = $this->getNote();
@@ -121,7 +125,7 @@ class NoteController extends AbstractController
         ];
         $this->view->render('show', $viewParams);
     }
-
+    //pobieranie notatki
     private function getNote(): array
     {
         $id = (int)$this->request->getParam('id');
@@ -139,6 +143,7 @@ class NoteController extends AbstractController
         return $note;
     }
 
+    //rejestracja
     public function registerAction(): void
     {
         if ($this->request->isPost()) {
@@ -160,6 +165,7 @@ class NoteController extends AbstractController
         $this->view->render('register');
     }
 
+    //logowanie
     public function loginAction(): void
     {
         if ($this->request->isPost()) {
@@ -179,6 +185,7 @@ class NoteController extends AbstractController
         $this->view->render('login');
     }
 
+    //wylogowanie
     public function logoutAction(): void
     {
         unset($_SESSION['id']);
