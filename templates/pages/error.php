@@ -1,0 +1,3 @@
+<div>
+    <?= $params['message'] ?? '' ?>
+</div>
